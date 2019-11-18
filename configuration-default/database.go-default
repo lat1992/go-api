@@ -1,0 +1,30 @@
+/*
+ * File: X:\enigm-mvc\configuration\database.go
+ * Created At: 2019-11-15 22:28:43
+ * Created By: Mauhoi WU
+ * 
+ * Modified At: 2019-11-15 22:35:55
+ * Modified By: Mauhoi WU
+ */
+
+package configuration
+
+func GetDatabase() map[string]string {
+	databaseConfig := make(map[string]string)
+	databaseConfig["address"] = "localhost"
+	databaseConfig["port"] = "5432"
+	databaseConfig["username"] = "enigm"
+	databaseConfig["password"] = ""
+	databaseConfig["database"] = "ENIGM"
+	return databaseConfig
+}
+
+func GetRedis() map[string]string {
+	redisConfig := make(map[string]string)
+	redisConfig["address"] = "localhost"
+	redisConfig["port"] = "6379"
+	redisConfig["username"] = "enigm"
+	redisConfig["password"] = ""
+	redisConfig["database"] = "0"
+	return redisConfig
+}

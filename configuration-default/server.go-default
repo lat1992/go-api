@@ -1,0 +1,22 @@
+/*
+ * File: X:\enigm-mvc\configuration\server.go
+ * Created At: 2019-11-15 22:30:56
+ * Created By: Mauhoi WU
+ * 
+ * Modified At: 2019-11-15 22:36:55
+ * Modified By: Mauhoi WU
+ */
+
+package configuration
+
+func GetServer() map[string]string {
+	serverConfig := make(map[string]string)
+	serverConfig["name"] = "Enigm"
+	serverConfig["domain"] = ""
+	serverConfig["web-url"] = ""
+	serverConfig["tls"] = "no"
+	serverConfig["port"] = "8081"
+	serverConfig["certificat-directory"] = ""
+	serverConfig["debug"] = "yes"
+	return serverConfig
+}
