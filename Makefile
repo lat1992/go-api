@@ -1,4 +1,6 @@
-NAME			=	enigm
+NAME			=	go-api
+
+BINARY_NAME		=	$(NAME).out
 
 GO				=	go
 
@@ -16,28 +18,22 @@ RM				=	rm -f
 
 FLAGS			=	-p 2
 
-DEBUG_FLAGS		=	-gcflags '-N -l'
-
 all				:	test build
 
 build			:
-					$(GOBUILD) -o $(NAME) -v $(FLAGS)
-
-debug_build		:
-					$(GOBUILD) -o $(NAME) -v $(DEBUG_FLAGS)
+					$(GOBUILD) -o $(BINARY_NAME) -v $(FLAGS)
 
 test			:
-					$(GOTEST) -v
+					$(GOTEST) -v ./...
 
 run				:
-					./$(NAME)
+					./$(BINARY_NAME)
 
 clean			:
 					$(GOCLEAN)
-					$(RM) $(NAME)
+					$(RM) $(BINARY_NAME)
 
 dependencies	:
-					$(GOGET) -u golang.org/x/text
 					$(GOGET) -u github.com/gin-gonic/gin
 					$(GOGET) -u github.com/gin-contrib/cors
 					$(GOGET) -u github.com/go-pg/pg
@@ -45,12 +41,8 @@ dependencies	:
 
 install			:	dependencies
 
-rebuild			:	clean test build
+rebuild			:	clean build
 
 re				:	rebuild
 
-debug_rebuild	:	clean test debug_build
-
-dre				:	debug_rebuild
-
-.PHONY			:	all make build debug_build test clean run dependencies install rebuild re
+.PHONY			:	all make build test clean run dependencies install rebuild re

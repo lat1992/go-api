@@ -1,7 +1,31 @@
-# Enigm-MVC
+# go-api
 
 ## Desciption
 RESTful API framework for Gin
+
+## Feature
+MVC Pattern
+
+Custom CORS Parameter
+
+TLS support
+
+PostgreSQL support
+
+Default token system
+
+## Futur update
+Add expire date support in token system
+
+Add Basic Auth support
+
+Add more unit test
+
+Add external ftp connection support
+
+Add external emailing support
+
+Add redis support
 
 ## Requirement
 Go: 1.12+
@@ -25,13 +49,17 @@ $export GOPATH="{The path}"
 
 ### Set configuration file
 ```
-$cp config-default.json config.json
+$cp -r configuration-default configuration
 ```
-Change any option you need
+Change any option that you need
 
 ### Installation
 ```
 $make install
+```
+If you have some problem with golang.org/x/ dependency, please update your dependencies with:
+```
+go get -u golang.org/x/name_of_package
 ```
 
 ### Build
@@ -47,16 +75,6 @@ $make re
 ### Run project
 ```
 $make run
-```
-
-### Debug build without optimisations
-```
-$make debug_build
-```
-
-### Debug rebuild
-```
-$make dre
 ```
 
 ### Run tests

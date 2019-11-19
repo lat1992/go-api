@@ -1,9 +1,9 @@
 /*
- * File: X:\enigm-mvc\controller\UserController.go
+ * File: X:\go-api\controller\UserController.go
  * Created At: 2019-11-12 18:10:25
  * Created By: Mauhoi WU
  * 
- * Modified At: 2019-11-15 22:40:09
+ * Modified At: 2019-11-19 17:13:12
  * Modified By: Mauhoi WU
  */
 
@@ -15,16 +15,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"../model"
 )
-
-func hashPassword(password string) (string, error) {
-	bytes, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.MinCost)
-	return string(bytes), err
-}
-
-func comparePassword(hash, password string) error {
-	err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password))
-	return err
-}
 
 func CreateUser(c *gin.Context) {
 	data := struct {
@@ -50,8 +40,8 @@ func CreateUser(c *gin.Context) {
 		c.JSON(203, gin.H{ "message": "Username or Email used" })
 		return
 	}
-	hash, _ := hashPassword(data.Password)
-	user_id := m.AddUser(data.Username, data.Email, hash, data.FullName, data.Country, data.Telephone)
+	hash, _ := bcrypt.GenerateFromPassword([]byte(data.Password), bcrypt.MinCost)
+	user_id := m.AddUser(data.Username, data.Email, string(hash), data.FullName, data.Country, data.Telephone)
 	token := GenerateToken(user_id)
 	c.JSON(201, gin.H{ "token": token })
 }
@@ -77,7 +67,7 @@ func LoginUser(c *gin.Context) {
 		return
 	}
 	user_id, password := m.GetUserIdAndPasswordByUsername(data.Username)
-	if comparePassword(password, data.Password) != nil {
+	if bcrypt.CompareHashAndPassword([]byte(password), []byte(data.Password)) != nil {
 		c.JSON(203, gin.H{ "message": "Password is incorrect" })
 		return
 	}
@@ -120,16 +110,4 @@ func GetUser(c *gin.Context) {
 	m := model.NewModel()
 	defer m.Destroy()
 	m.GetUserById(id)
-}
-
-func ChangeUserPassword(c *gin.Context) {
-
-}
-
-func ChangeUserInformation(c *gin.Context) {
-
-}
-
-func DeleteUser(c *gin.Context) {
-
 }

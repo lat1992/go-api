@@ -1,9 +1,9 @@
 /*
- * File: X:\enigm-mvc\controller\AuthController.go
+ * File: X:\go-api\controller\AuthController.go
  * Created At: 2019-11-07 18:11:23
  * Created By: Mauhoi WU
  * 
- * Modified At: 2019-11-18 20:49:45
+ * Modified At: 2019-11-19 17:06:20
  * Modified By: Mauhoi WU
  */
 

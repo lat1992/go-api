@@ -1,9 +1,9 @@
 /*
- * File: X:\enigm-mvc\model\TokenModel.go
+ * File: X:\go-api\model\TokenModel.go
  * Created At: 2019-11-06 14:57:07
  * Created By: Mauhoi WU
  * 
- * Modified At: 2019-11-18 20:50:31
+ * Modified At: 2019-11-19 17:19:08
  * Modified By: Mauhoi WU
  */
 

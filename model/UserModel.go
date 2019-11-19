@@ -1,9 +1,9 @@
 /*
- * File: X:\enigm-mvc\model\UserModel.go
+ * File: X:\go-api\model\UserModel.go
  * Created At: 2019-11-05 22:56:10
  * Created By: Mauhoi WU
  * 
- * Modified At: 2019-11-18 20:50:46
+ * Modified At: 2019-11-19 17:19:10
  * Modified By: Mauhoi WU
  */
 
