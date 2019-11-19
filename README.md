@@ -19,7 +19,7 @@ Add expire date support in token system
 
 Add Basic Auth support
 
-Add more unit test
+Add test for http connections
 
 Add external ftp connection support
 
@@ -34,6 +34,8 @@ Makefile: any
 
 Git: any
 
+PostgreSQL
+
 Verify GOPATH variable:
 ```
 $go env | grep PATH
@@ -47,11 +49,14 @@ $export GOPATH="{The path}"
 
 ## Project setup
 
+### Database
+After install PostgreSQL, import database/database.sql file in your database.
+
 ### Set configuration file
 ```
 $cp -r configuration-default configuration
 ```
-Change any option that you need
+Change any options that you need
 
 ### Installation
 ```
@@ -59,7 +64,7 @@ $make install
 ```
 If you have some problem with golang.org/x/ dependency, please update your dependencies with:
 ```
-go get -u golang.org/x/name_of_package
+$go get -u golang.org/x/name_of_package
 ```
 
 ### Build
