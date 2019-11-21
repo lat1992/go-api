@@ -3,7 +3,7 @@
  * Created At: 2019-11-05 22:56:10
  * Created By: Mauhoi WU
  * 
- * Modified At: 2019-11-19 17:19:10
+ * Modified At: 2019-11-21 19:12:22
  * Modified By: Mauhoi WU
  */
 
@@ -25,61 +25,61 @@ type User struct {
 	UpdateAt	time.Time
 }
 
-func (m *Model) VerifyUsername(username string) int {
+func VerifyUsername(username string) int {
 	user := new(User)
-	count, err := m.db.Model(user).Where("username LIKE ?", username).Count()
+	count, err := db.Model(user).Where("username LIKE ?", username).Count()
 	if err != nil {
 		panic(err)
 	}
 	return count
 }
 
-func (m *Model) VerifyEmail(email string) int {
+func VerifyEmail(email string) int {
 	user := new(User)
-	count, err := m.db.Model(user).Column("email").Where("email LIKE ?", email).Count()
+	count, err := db.Model(user).Column("email").Where("email LIKE ?", email).Count()
 	if err != nil {
 		panic(err)
 	}
 	return count
 }
 
-func (m *Model) GetUserIdAndPasswordByUsername(username string) (int, string) {
+func GetUserIdAndPasswordByUsername(username string) (int, string) {
 	user := new(User)
-	err := m.db.Model(user).Column("id", "password").Where("username LIKE ?", username).Select()
+	err := db.Model(user).Column("id", "password").Where("username LIKE ?", username).Select()
 	if err != nil {
 		panic(err)
 	}
 	return user.Id, user.Password
 }
 
-func (m *Model) VerifyUserIdAndPassword(id int, password string) int {
+func VerifyUserIdAndPassword(id int, password string) int {
 	user := new(User)
-	count, err := m.db.Model(user).Where("id = ? AND password LIKE ?", id, password).Count()
+	count, err := db.Model(user).Where("id = ? AND password LIKE ?", id, password).Count()
 	if err != nil {
 		panic(err)
 	}
 	return count
 }
 
-func (m *Model) GetUserById(id int) *User {
+func GetUserById(id int) *User {
 	user := &User{Id: id}
-	err := m.db.Select(user)
+	err := db.Select(user)
 	if err != nil {
 		panic(err)
 	}
 	return user
 }
 
-func (m *Model) GetUsers(limit int, offset int) []User {
+func GetUsers(limit int, offset int) []User {
 	var users []User
-	err := m.db.Model(&users).Limit(limit).Offset(offset).Select()
+	err := db.Model(&users).Limit(limit).Offset(offset).Select()
 	if err != nil {
 		panic(err)
 	}
 	return users
 }
 
-func (m *Model) AddUser(username, email, password, full_name, country, telephone string) int {
+func AddUser(username, email, password, full_name, country, telephone string) int {
 	user := User{
 		Username: username,
 		Email: email,
@@ -89,14 +89,14 @@ func (m *Model) AddUser(username, email, password, full_name, country, telephone
 		Telephone: telephone,
 		UpdateAt: time.Now(),
 	}
-	err := m.db.Insert(&user)
+	err := db.Insert(&user)
 	if err != nil {
 		panic(err)
 	}
 	return user.Id
 }
 
-func (m *Model) UpdateUser(id int, email, password, full_name, country, telephone string) {
+func UpdateUser(id int, email, password, full_name, country, telephone string) {
 	user := &User{
 		Id: id,
 		Email: email,
@@ -105,26 +105,26 @@ func (m *Model) UpdateUser(id int, email, password, full_name, country, telephon
 		Country: country,
 		Telephone: telephone,
 	}
-	err := m.db.Update(user)
+	err := db.Update(user)
 	if err != nil {
 		panic(err)
 	}
 }
 
-func (m *Model) UpdateUserPassword(id int, password string) {
+func UpdateUserPassword(id int, password string) {
 	user := &User{
 		Id: id,
 		Password: password,
 	}
-	err := m.db.Update(user)
+	err := db.Update(user)
 	if err != nil {
 		panic(err)
 	}
 }
 
-func (m *Model) DeleteUser(id int) {
+func DeleteUser(id int) {
 	user := &User{Id: id}
-	err := m.db.Delete(user)
+	err := db.Delete(user)
 	if err != nil {
 		panic(err)
 	}

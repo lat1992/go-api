@@ -3,7 +3,7 @@
  * Created At: 2019-11-03 18:19:28
  * Created By: Mauhoi WU
  * 
- * Modified At: 2019-11-19 17:19:13
+ * Modified At: 2019-11-21 19:16:52
  * Modified By: Mauhoi WU
  */
 
@@ -22,6 +22,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/gin-contrib/cors"
 	"./configuration"
+	"./model"
 )
 
 func serve(TLS string, server *http.Server) {
@@ -56,6 +57,11 @@ func safeQuit(server *http.Server) {
 func main() {
 	var server *http.Server
 	config := configuration.GetServer()
+	if config["debug"] == "no" {
+		gin.SetMode(gin.ReleaseMode)
+	}
+	model.OpenDatabase()
+	defer model.CloseDatabase()
 	router := gin.Default()
 	if config["tls"] == "no" {
 		router.Use(cors.Default())

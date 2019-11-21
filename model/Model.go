@@ -3,7 +3,7 @@
  * Created At: 2019-09-18 15:42:05
  * Created By: Mauhoi WU
  * 
- * Modified At: 2019-11-19 17:19:06
+ * Modified At: 2019-11-21 19:15:54
  * Modified By: Mauhoi WU
  */
 
@@ -14,23 +14,11 @@ import (
 	"../configuration"
 )
 
-type Model struct {
-	db	*pg.DB
-}
+var db	*pg.DB
 
-func NewModel() *Model {
-	m := &Model{}
-	m.OpenDatabase()
-	return m
-}
-
-func (m *Model) Destroy() {
-	m.CloseDatabase()
-}
-
-func (m *Model) OpenDatabase() {
+func OpenDatabase() {
 	config := configuration.GetDatabase()
-	m.db = pg.Connect(&pg.Options{
+	db = pg.Connect(&pg.Options{
 		Addr: config["address"] +":"+ config["port"],
 		User: config["username"],
 		Password: config["password"],
@@ -38,6 +26,6 @@ func (m *Model) OpenDatabase() {
 	})
 }
 
-func (m *Model) CloseDatabase() {
-	m.db.Close()
+func CloseDatabase() {
+	db.Close()
 }

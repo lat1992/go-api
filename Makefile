@@ -18,7 +18,7 @@ RM				=	rm -f
 
 FLAGS			=	-p 2
 
-all				:	test build
+all				:	build
 
 build			:
 					$(GOBUILD) -o $(BINARY_NAME) -v $(FLAGS)

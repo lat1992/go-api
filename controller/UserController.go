@@ -3,7 +3,7 @@
  * Created At: 2019-11-12 18:10:25
  * Created By: Mauhoi WU
  * 
- * Modified At: 2019-11-19 17:13:12
+ * Modified At: 2019-11-21 19:09:51
  * Modified By: Mauhoi WU
  */
 
@@ -34,14 +34,14 @@ func CreateUser(c *gin.Context) {
 		ErrorEndCall(c, 403, "Username, Email, Password, FullName parameter not found")
 		return
 	}
-	m := model.NewModel()
-	defer m.Destroy()
-	if m.VerifyUsername(data.Username) != 0 || m.VerifyEmail(data.Email) != 0 {
+	// m := model.NewModel()
+	// defer model.Destroy()
+	if model.VerifyUsername(data.Username) != 0 || model.VerifyEmail(data.Email) != 0 {
 		c.JSON(203, gin.H{ "message": "Username or Email used" })
 		return
 	}
 	hash, _ := bcrypt.GenerateFromPassword([]byte(data.Password), bcrypt.MinCost)
-	user_id := m.AddUser(data.Username, data.Email, string(hash), data.FullName, data.Country, data.Telephone)
+	user_id := model.AddUser(data.Username, data.Email, string(hash), data.FullName, data.Country, data.Telephone)
 	token := GenerateToken(user_id)
 	c.JSON(201, gin.H{ "token": token })
 }
@@ -60,13 +60,13 @@ func LoginUser(c *gin.Context) {
 		ErrorEndCall(c, 403, "username or password parameter not found")
 		return
 	}
-	m := model.NewModel()
-	defer m.Destroy()
-	if m.VerifyUsername(data.Username) == 0 {
+	// m := model.NewModel()
+	// defer model.Destroy()
+	if model.VerifyUsername(data.Username) == 0 {
 		c.JSON(203, gin.H{ "message": "Username is incorrect" })
 		return
 	}
-	user_id, password := m.GetUserIdAndPasswordByUsername(data.Username)
+	user_id, password := model.GetUserIdAndPasswordByUsername(data.Username)
 	if bcrypt.CompareHashAndPassword([]byte(password), []byte(data.Password)) != nil {
 		c.JSON(203, gin.H{ "message": "Password is incorrect" })
 		return
@@ -90,9 +90,9 @@ func GetUserList(c *gin.Context) {
 	if err != nil || rows < 1 {
 		page = 1
 	}
-	m := model.NewModel()
-	defer m.Destroy()
-	users := m.GetUsers(rows, page)
+	// m := model.NewModel()
+	// defer model.Destroy()
+	users := model.GetUsers(rows, page)
 	c.JSON(200, users)
 }
 
@@ -107,7 +107,7 @@ func GetUser(c *gin.Context) {
 		ErrorEndCall(c, 400, "id parameter should be numeric and bigger than 0")
 		return
 	}
-	m := model.NewModel()
-	defer m.Destroy()
-	m.GetUserById(id)
+	// m := model.NewModel()
+	// defer model.Destroy()
+	model.GetUserById(id)
 }
