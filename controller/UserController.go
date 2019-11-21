@@ -3,7 +3,7 @@
  * Created At: 2019-11-12 18:10:25
  * Created By: Mauhoi WU
  * 
- * Modified At: 2019-11-21 19:09:51
+ * Modified At: 2019-11-21 19:20:57
  * Modified By: Mauhoi WU
  */
 
@@ -34,8 +34,6 @@ func CreateUser(c *gin.Context) {
 		ErrorEndCall(c, 403, "Username, Email, Password, FullName parameter not found")
 		return
 	}
-	// m := model.NewModel()
-	// defer model.Destroy()
 	if model.VerifyUsername(data.Username) != 0 || model.VerifyEmail(data.Email) != 0 {
 		c.JSON(203, gin.H{ "message": "Username or Email used" })
 		return
@@ -60,8 +58,6 @@ func LoginUser(c *gin.Context) {
 		ErrorEndCall(c, 403, "username or password parameter not found")
 		return
 	}
-	// m := model.NewModel()
-	// defer model.Destroy()
 	if model.VerifyUsername(data.Username) == 0 {
 		c.JSON(203, gin.H{ "message": "Username is incorrect" })
 		return
@@ -90,8 +86,6 @@ func GetUserList(c *gin.Context) {
 	if err != nil || rows < 1 {
 		page = 1
 	}
-	// m := model.NewModel()
-	// defer model.Destroy()
 	users := model.GetUsers(rows, page)
 	c.JSON(200, users)
 }
@@ -107,7 +101,5 @@ func GetUser(c *gin.Context) {
 		ErrorEndCall(c, 400, "id parameter should be numeric and bigger than 0")
 		return
 	}
-	// m := model.NewModel()
-	// defer model.Destroy()
 	model.GetUserById(id)
 }
