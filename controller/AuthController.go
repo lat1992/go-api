@@ -3,7 +3,7 @@
  * Created At: 2019-11-07 18:11:23
  * Created By: Mauhoi WU
  * 
- * Modified At: 2019-11-21 19:07:52
+ * Modified At: 2019-11-21 19:20:50
  * Modified By: Mauhoi WU
  */
 
@@ -17,8 +17,6 @@ import (
 )
 
 func GenerateToken(user_id int) string {
-	// m := model.NewModel()
-	// defer model.Destroy()
 	token := uniuri.NewLen(20)
 	model.DeleteOldToken(user_id)
 	model.CreateToken(user_id, token, time.Now().AddDate(0, 1, 0))
@@ -27,8 +25,6 @@ func GenerateToken(user_id int) string {
 
 func CheckToken(c *gin.Context) int {
 	token := c.Param("token")
-	// m := model.NewModel()
-	// defer model.Destroy()
 	if model.VerifyToken(token) == 0 {
 		return 0
 	}
