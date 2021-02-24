@@ -20,6 +20,8 @@ FTP support without use case
 
 reCaptcha support (can be remove by finding "WARN")
 
+Existing use case for user management
+
 ## Futur update
 Add external emailing support
 
