@@ -18,6 +18,8 @@ Redis support without use case
 
 FTP support without use case
 
+reCaptcha support (can be remove by finding "WARN")
+
 ## Futur update
 Add external emailing support
 
