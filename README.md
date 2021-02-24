@@ -4,6 +4,8 @@
 RESTful API template project for Go using Gin
 
 ## Feature
+Cloud friendly
+
 CMD layout
 
 MVC Pattern
@@ -18,7 +20,7 @@ Redis support without use case
 
 FTP support without use case
 
-reCaptcha support (can be remove by finding "WARN")
+reCaptcha support (can be remove by finding the keyword "WARN")
 
 Existing use case for user management
 
