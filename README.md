@@ -1,34 +1,32 @@
 # go-api
 
-## Desciption
-RESTful API framework for Gin
+## Description
+RESTful API template project for Go using Gin
 
 ## Feature
+CMD layout
+
 MVC Pattern
 
-Custom CORS Parameter
+JWT support
 
 TLS support
 
 PostgreSQL support
 
-Default token system
+Redis support without use case
+
+FTP support without use case
 
 ## Futur update
-Add expire date support in token system
-
-Add Basic Auth support
-
-Add test for http connections
-
-Add external ftp connection support
-
 Add external emailing support
 
-Add redis support
+Redis example use case
+
+FTP example use case
 
 ## Requirement
-Go: 1.12+
+Go: 1.14+
 
 Makefile: any
 
@@ -49,22 +47,20 @@ $export GOPATH="{The path}"
 
 ## Project setup
 
-### Database
-After install PostgreSQL, import database/database.sql file in your database.
-
-### Set configuration file
+### Set configuration
 ```
-$cp -r configuration-default configuration
+$EXPORT ABC=DEF
 ```
-Change any options that you need
+Add any configs that you need
 
 ### Installation
 ```
 $make install
 ```
-If you have some problem with golang.org/x/ dependency, please update your dependencies with:
+
+### Vendoring
 ```
-$go get -u golang.org/x/name_of_package
+$make vendor
 ```
 
 ### Build

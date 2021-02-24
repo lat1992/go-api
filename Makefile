@@ -6,11 +6,11 @@ GO				=	go
 
 GOBUILD			=	$(GO) build
 
+GOMOD			=	$(GO) mod
+
 GOCLEAN			=	$(GO) clean
 
 GOTEST			=	$(GO) test
-
-GOGET			=	$(GO) get
 
 GOENV			=	$(GO) env
 
@@ -33,16 +33,14 @@ clean			:
 					$(GOCLEAN)
 					$(RM) $(BINARY_NAME)
 
-dependencies	:
-					$(GOGET) -u github.com/gin-gonic/gin
-					$(GOGET) -u github.com/gin-contrib/cors
-					$(GOGET) -u github.com/go-pg/pg
-					$(GOGET) -u github.com/dchest/uniuri
+install			:
+					$(GOMOD) download
 
-install			:	dependencies
+vendor			:
+					$(GOMOD) vendor
 
 rebuild			:	clean build
 
 re				:	rebuild
 
-.PHONY			:	all make build test clean run dependencies install rebuild re
+.PHONY			:	all make build test clean run install vendor rebuild re
