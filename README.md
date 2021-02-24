@@ -20,7 +20,7 @@ Redis support without use case
 
 FTP support without use case
 
-reCaptcha support (can be remove by finding the keyword "WARN")
+reCaptcha support (can be remove by finding the keyword "WARN" or "captcha")
 
 Existing use case for user management
 
