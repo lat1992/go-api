@@ -4,41 +4,35 @@
 RESTful API template project for Go using Gin
 
 ## Feature
-Cloud friendly
-
 CMD layout
 
-MVC Pattern
+Use golang.org/x/exp/slog as Logger
 
-JWT support
+autoTLS support
 
-TLS support
-
-PostgreSQL support
-
-Redis support without use case
-
-FTP support without use case
-
-reCaptcha support (can be remove by finding the keyword "WARN" or "captcha")
+Postgres support
 
 Existing use case for user management
 
-## Futur update
+## Side packages
+- JWT
+- Query builder
+- FTP
+- Recaptcha
+
+## Future update
 Add external emailing support
 
-Redis example use case
-
-FTP example use case
+More use cases
 
 ## Requirement
-Go: 1.14+
+Go: 1.20+
 
 Makefile: any
 
 Git: any
 
-PostgreSQL
+PostgreSQL: 15+
 
 Verify GOPATH variable:
 ```
@@ -67,6 +61,11 @@ $make install
 ### Vendoring
 ```
 $make vendor
+```
+
+### Update dependencies
+```
+$make update
 ```
 
 ### Build
