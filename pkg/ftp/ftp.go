@@ -3,10 +3,11 @@ package ftp
 import (
 	"bytes"
 	"fmt"
-	"github.com/jlaffaye/ftp"
 	"io"
 	"mime/multipart"
 	"net/url"
+
+	"github.com/jlaffaye/ftp"
 )
 
 type FTP struct {

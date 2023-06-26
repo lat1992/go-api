@@ -1,9 +1,10 @@
 package handlers
 
 import (
-	"github.com/gin-gonic/gin"
-	"go-api/internal"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
+	"github.com/lat1992/go-api/internal"
 )
 
 type GetUserRequest struct {

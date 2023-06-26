@@ -1,7 +1,7 @@
 package internal
 
 import (
-	"go-api/pkg/jwt"
+	"github.com/lat1992/go-api/pkg/jwt"
 )
 
 type AuthService interface {

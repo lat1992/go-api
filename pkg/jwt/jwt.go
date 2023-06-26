@@ -2,8 +2,9 @@ package jwt
 
 import (
 	"fmt"
-	"github.com/golang-jwt/jwt"
 	"time"
+
+	"github.com/golang-jwt/jwt"
 )
 
 type Service struct {

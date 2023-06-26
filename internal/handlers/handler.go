@@ -2,7 +2,7 @@ package handlers
 
 import (
 	"github.com/gin-gonic/gin"
-	"go-api/internal"
+	"github.com/lat1992/go-api/internal"
 	"golang.org/x/exp/slog"
 )
 

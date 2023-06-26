@@ -2,8 +2,9 @@ package services
 
 import (
 	"fmt"
-	"go-api/internal"
-	"go-api/internal/database"
+
+	"github.com/lat1992/go-api/internal"
+	"github.com/lat1992/go-api/internal/database"
 	"golang.org/x/crypto/bcrypt"
 )
 

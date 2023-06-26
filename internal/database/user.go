@@ -3,10 +3,11 @@ package database
 import (
 	"context"
 	"fmt"
+
 	"github.com/georgysavva/scany/v2/pgxscan"
 	"github.com/jackc/pgx/v5"
-	"go-api/internal"
-	"go-api/pkg/query"
+	"github.com/lat1992/go-api/internal"
+	"github.com/lat1992/go-api/pkg/query"
 )
 
 func (db *Database) CountUserByEmail(email string) (int, error) {

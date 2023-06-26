@@ -3,12 +3,12 @@ package main
 import (
 	"github.com/gin-gonic/autotls"
 	"github.com/gin-gonic/gin"
-	"go-api/internal/config"
-	"go-api/internal/database"
-	"go-api/internal/handlers"
-	"go-api/internal/services"
-	"go-api/pkg/jwt"
-	"go-api/pkg/recaptcha"
+	"github.com/lat1992/go-api/internal/config"
+	"github.com/lat1992/go-api/internal/database"
+	"github.com/lat1992/go-api/internal/handlers"
+	"github.com/lat1992/go-api/internal/services"
+	"github.com/lat1992/go-api/pkg/jwt"
+	"github.com/lat1992/go-api/pkg/recaptcha"
 	"golang.org/x/exp/slog"
 )
 

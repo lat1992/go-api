@@ -1,10 +1,11 @@
 package handlers
 
 import (
-	"github.com/gin-gonic/gin"
-	"go-api/internal"
 	"net/http"
 	"time"
+
+	"github.com/gin-gonic/gin"
+	"github.com/lat1992/go-api/internal"
 )
 
 type registerRequest struct {

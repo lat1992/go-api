@@ -1,4 +1,4 @@
-module go-api
+module github.com/lat1992/go-api
 
 go 1.20
 
